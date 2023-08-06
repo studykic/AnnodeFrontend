@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.kic.pospace",
+      "sha256_cert_fingerprints": [
+        "1B:88:36:6E:A8:10:59:47:E4:C5:7D:21:99:A7:FA:00:0A:83:A7:48:4A:99:22:76:77:0A:70:9F:A2:2E:D7:6E",
+        "26:C3:88:1D:6A:CF:00:6F:93:6C:F9:27:9E:56:02:70:4B:47:C3:EE:50:A4:C4:7C:3A:2C:F3:D7:C6:B2:C8:7C"
+      ]
+    }
+  }
+]

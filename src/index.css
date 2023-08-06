@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Grandiflora+One&family=Lora&display=swap");
+
+body {
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+:root {
+  --vh: 100%;
+}
