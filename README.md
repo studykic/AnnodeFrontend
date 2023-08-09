@@ -1,10 +1,17 @@
 # Annode 프로젝트
 
+## Android 앱 & 웹사이트
+
+<a href='https://play.google.com/store/apps/details?id=com.kic.pospace'><img alt='Google Play에서 받기' src='https://play.google.com/intl/ko/badges/static/images/badges/ko_badge_web_generic.png' width='200'/></a>
+
+[웹사이트로 방문](https://annode-kic.com)
+
+- https://annode-kic.com
+
 ### 연관 GitHub Repository
+### 프로젝트 주요 설명은 Annode_Backend로 가주세요!
 
-### [Annode_Frontend](https://github.com/studykic/Annode_Frontend)
+### [Annode Frontend](https://github.com/studykic/AnnodeFrontend)
 
-### [Annode_Backend](https://github.com/studykic/Annode_Backend)
-
-## 프로젝트 설명은 Annode_Backend로 가주세요!
+### [Annode Backend](https://github.com/studykic/AnnodeBackend)
 
