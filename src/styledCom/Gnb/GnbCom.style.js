@@ -19,9 +19,14 @@ export const GnbContainer = styled.div`
   color: #aaa;
   z-index: 100;
 
-  opacity: ${(props) => (props.scrollDirection === "down" ? 0 : 1)};
+  // 스크롤을 윗방향으로 올리면 화면에 표시
+  /* opacity: ${(props) => (props.scrollDirection ? 1 : 0)}; */
+  /* transition: 0.2s; */
 
-  transition: 0.2s;
+  opacity: ${(props) => (props.scrollDirection ? 1 : 0)};
+  visibility: ${(props) => (props.scrollDirection ? "visible" : "hidden")};
+  transition: opacity 0.2s, visibility 0.2s linear 0s;
+
   & span {
     font-size: 0.9rem;
   }

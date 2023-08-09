@@ -6,6 +6,7 @@ import Request from "../../Util/Request";
 import useLatest from "../useLatest";
 
 function usePospaceInfo({
+  setPospaceWs,
   audioRef,
   pospaceInfo,
   getPospaceToken,
@@ -22,6 +23,9 @@ function usePospaceInfo({
   setLikePospaceID,
   setShowReportModal,
   setPospaceCommentList,
+  setSelectPospaceId,
+  setPospaceModal,
+  setUserInfoModal,
 }) {
   const colorCodes = ["#fa6e85", "#675eb9", "#5bcff5", "#00695C", "#FFB300", "#00FFAA"];
 
@@ -93,11 +97,11 @@ function usePospaceInfo({
       navigator.mediaDevices
         .enumerateDevices()
         .then((devices) => {
-          var microphoneExists = devices.some((device) => "audioinput" === device.kind);
+          const microphoneExists = devices.some((device) => "audioinput" === device.kind);
           if (microphoneExists) {
             fetchData();
           } else {
-            console.log("마이크가 연결되지 않았습니다. ");
+            setGlobalMsg((prev) => [...prev, "기기에 마이크가 연결되지 않았습니다."]);
           }
         })
         .catch((err) => {
@@ -197,6 +201,7 @@ function usePospaceInfo({
     socket.onopen = () => {
       console.log("온 오픈 소켓", jwt);
       setWs(socket);
+      setPospaceWs(socket);
       setWsId(getWsid(socket));
     };
 
@@ -224,6 +229,9 @@ function usePospaceInfo({
     } else {
       // 라우트가 변경될 때마다 cleanup을 실행
       cleanup();
+      setSelectPospaceId(null);
+      setPospaceModal(false);
+      setUserInfoModal(false);
     }
   }, [location, selectPospaceId]);
 
@@ -431,7 +439,7 @@ function usePospaceInfo({
         setSenderIdentifierValue((prev) => [...prev, { [senderIdentifier]: senderSId }]);
       })
       .catch((reason) => {
-        console.error("연결중 offer 문제가 발생하였습니다 : ", reason);
+        console.error("연결중 offer 문제가 발생 : ", reason);
       });
   }
 
@@ -537,7 +545,7 @@ function usePospaceInfo({
         setSenderIdentifierValue((prev) => [...prev, { [senderIdentifier]: senderSId }]);
       })
       .catch((reason) => {
-        console.error("연결중 answer 문제가 발생하였습니다 : ", reason);
+        console.error("연결중 answer 문제가 발생 : ", reason);
       });
   }
 
@@ -1069,7 +1077,7 @@ function usePospaceInfo({
         if (channel.readyState === "open") {
           channel.send(messageData);
         } else if (channel.readyState === "closed") {
-          console.log(`${channel} 데이터채널이 closed 입니다. 제거합니다.`);
+          console.log(`${channel} 데이터채널이 closed임으로. 제거`);
           setDataChannel((prev) => prev.filter((ch) => ch !== channel));
         }
       });

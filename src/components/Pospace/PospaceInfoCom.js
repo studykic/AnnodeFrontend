@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaCheck, FaEdit, FaExclamationTriangle, FaRegComment, FaShareAltSquare, FaTrash } from "react-icons/fa";
 import { IoIosMic } from "react-icons/io";
 import { MdSend } from "react-icons/md";
-import { useLocation } from "react-router-dom";
 import theme from "../../Util/theme";
 import useDelete from "../../hooks/axios/useDelete";
 import useGet from "../../hooks/axios/useGet";
@@ -71,7 +70,7 @@ import {
 import { StyledCloseIcon, StyledCloseIconBox } from "../../styledCom/Space/Space.style";
 import UserInfoCom from "../UserInfo/UserInfoCom";
 
-const PospaceInfoCom = ({ lastSegment, pospaceModal, setPospaceModal, selectPospaceId, setSelectPospaceId, setGlobalMsg }) => {
+const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceModal, selectPospaceId, setSelectPospaceId, setGlobalMsg }) => {
   //Audio
   const audioRef = useRef(null);
 
@@ -85,8 +84,6 @@ const PospaceInfoCom = ({ lastSegment, pospaceModal, setPospaceModal, selectPosp
   const [commentModal, setCommentModal] = useState(false);
   const [comment, setComment] = useState("");
   const [pospaceInfo, setPospaceInfo] = useState(null);
-
-  //
 
   const [userInfoModal, setUserInfoModal] = useState(false);
 
@@ -144,6 +141,7 @@ const PospaceInfoCom = ({ lastSegment, pospaceModal, setPospaceModal, selectPosp
     request_getPospaceComment,
     cleanup,
   } = usePospaceInfo({
+    setPospaceWs,
     inputState,
     setInputState,
     audioRef,
@@ -160,6 +158,9 @@ const PospaceInfoCom = ({ lastSegment, pospaceModal, setPospaceModal, selectPosp
     setLikePospaceID,
     setShowReportModal,
     setPospaceCommentList,
+    setSelectPospaceId,
+    setPospaceModal,
+    setUserInfoModal,
   });
 
   const { formatDateTime } = useTime();
@@ -173,16 +174,11 @@ const PospaceInfoCom = ({ lastSegment, pospaceModal, setPospaceModal, selectPosp
     }
   }
 
-  const location = useLocation();
-
-  // 뒤로가기를 발동하면 모든 Pospace가 닫히게됨, 하나의 레이어씩 닫기는 나가기 버튼을 통해 만들기
   useEffect(() => {
-    window.addEventListener("popstate", function (event) {
-      setSelectPospaceId(null);
-      setPospaceModal(false);
-      setUserInfoModal(false);
-    });
-  }, [lastSegment]);
+    return () => {
+      cleanup();
+    };
+  }, []);
 
   useEffect(() => {
     if (deleteCommentId) {
@@ -621,8 +617,15 @@ const PospaceInfoCom = ({ lastSegment, pospaceModal, setPospaceModal, selectPosp
                       setUserInfoModal(tag.userIdentifier);
                     }}
                   >
-                    Tag
-                    <img width={"50px"} height={"50px"} src={tag.profileImgFileUrl} />
+                    <ProfileImg
+                      onClick={() => {
+                        setUserInfoModal(pospaceInfo.writerSimpleRes.userIdentifier);
+                      }}
+                      width={"35px"}
+                      height={"35px"}
+                      src={tag.profileImgFileUrl}
+                      alt="User"
+                    />
                   </div>
                 ))}
             </>
@@ -651,16 +654,18 @@ const PospaceInfoCom = ({ lastSegment, pospaceModal, setPospaceModal, selectPosp
                 />
               </div>
 
-              <div>
-                <FaShareAltSquare
-                  onClick={() => {
-                    const url = `https://annode-kic.com/space/pospace${selectPospaceId}`;
+              {window.AndroidBridge ? null : (
+                <div>
+                  <FaShareAltSquare
+                    onClick={() => {
+                      const url = `https://annode-kic.com/space/pospace${selectPospaceId}`;
 
-                    navigator.clipboard.writeText(url);
-                    setGlobalMsg((prev) => [...prev, "링크가 복사되었습니다"]);
-                  }}
-                />
-              </div>
+                      navigator.clipboard.writeText(url);
+                      setGlobalMsg((prev) => [...prev, "링크가 복사되었습니다"]);
+                    }}
+                  />
+                </div>
+              )}
 
               {/* 신 */}
               <div>
@@ -703,6 +708,7 @@ const PospaceInfoCom = ({ lastSegment, pospaceModal, setPospaceModal, selectPosp
                     onClick={() => {
                       if (window.confirm("삭제 확인")) {
                         deletePospace(request_deletePospaceReq);
+                        cleanup();
                         setSelectPospaceId(null);
                         setPospaceInfo(null);
                         setPospaceModal(false);

@@ -259,6 +259,7 @@ const FriendCom = ({ setGlobalMsg }) => {
               <UserProfile key={`${userInfo.userIdentifier} UserByPhone`}>
                 <ProfileImg src={userInfo.profileImgFileUrl} width={"40px"} height={"40px"} />
                 <Nickname>{userInfo.nickName}</Nickname>
+                <Nickname>{userInfo.phoneNumber}</Nickname>
                 <FollowBtn
                   onClick={() => {
                     setUserIdentifier(userInfo.userIdentifier);

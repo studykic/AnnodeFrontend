@@ -20,6 +20,7 @@ import {
 import { uniqueId } from "lodash";
 import { FaRegHeart } from "react-icons/fa";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import SockJS from "sockjs-client";
 import usePost from "../../hooks/axios/usePost";
 import useTime from "../../hooks/useTime";
 import PospaceInfo from "../Pospace/PospaceInfoCom";
@@ -35,9 +36,11 @@ const SpaceCom = ({ setGlobalMsg }) => {
   const [pospaceModal, setPospaceModal] = useState(false);
   const [pospaceList, setPospaceList] = useState([]);
 
+  const [pospaceWs, setPospaceWs] = useState([]);
+
   const [isFirstReq, setIsFirstReq] = useState(true);
 
-  const [selectPospaceId, setSelectPospaceId] = useState(null);
+  const [selectPospaceId, setSelectPospaceId] = useState(undefined);
 
   const [likePospaceID, setLikePospaceID] = useState(undefined);
 
@@ -76,6 +79,14 @@ const SpaceCom = ({ setGlobalMsg }) => {
     };
   }, []);
 
+  // 간혈적으로 짧은시간에 방에서 퇴장과 입장이 반복된다면 웹소켓이 지워지지않을수있는데
+  // 이때 Space 부모 레이어에서 2차적으로 웹소켓종료함
+  useEffect(() => {
+    if (selectPospaceId === null && pospaceWs && pospaceWs.readyState !== SockJS.CLOSED) {
+      pospaceWs.close();
+    }
+  }, [pospaceWs, selectPospaceId]);
+
   useEffect(() => {
     const scrollEventHandler = () => {
       scrollEvent(getRoomList, request_getRoomListReq);
@@ -112,6 +123,11 @@ const SpaceCom = ({ setGlobalMsg }) => {
       postPospaceLike(request_postPospaceLike);
     }
   }, [likePospaceID]);
+
+  useEffect(() => {
+    if (selectPospaceId === null) {
+    }
+  }, [selectPospaceId]);
 
   const { formatDateTime } = useTime();
 
@@ -177,6 +193,7 @@ const SpaceCom = ({ setGlobalMsg }) => {
 
       {pospaceModal && (
         <PospaceInfo
+          setPospaceWs={setPospaceWs}
           lastSegment={lastSegment}
           pospaceModal={pospaceModal}
           setPospaceModal={setPospaceModal}

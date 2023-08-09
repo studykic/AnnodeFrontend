@@ -7,7 +7,9 @@ const GnbCom = ({ myInfo }) => {
   const navigate = useNavigate();
 
   const [lastScrollTop, setLastScrollTop] = useState(0);
-  const [scrollDirection, setScrollDirection] = useState("up");
+
+  // 윗방향이 true , 아랫방향이 false
+  const [scrollDirection, setScrollDirection] = useState(true);
 
   const handleScroll = () => {
     const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -15,9 +17,9 @@ const GnbCom = ({ myInfo }) => {
     const isSpaceUri = window.location.pathname.split("/")[1] === "space";
 
     if (currentScrollTop > lastScrollTop && isSpaceUri) {
-      setScrollDirection("down");
+      setScrollDirection(false);
     } else {
-      setScrollDirection("up");
+      setScrollDirection(true);
     }
     setLastScrollTop(currentScrollTop <= 0 ? 0 : currentScrollTop);
   };
