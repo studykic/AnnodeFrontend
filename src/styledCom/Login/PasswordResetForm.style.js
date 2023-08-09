@@ -25,7 +25,6 @@ export const PassWordResetInputWrapper = styled.div`
 export const PassWordResetInput = styled.input`
   border: none;
   background-color: transparent;
-  /* height: 100%; */
   color: ${theme.fontColor};
 
   margin-bottom: 1rem;

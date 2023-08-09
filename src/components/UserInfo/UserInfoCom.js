@@ -9,7 +9,7 @@ import useUserInfo from "../../hooks/useUserInfo";
 import BlueBtn from "../../styledCom/BlueBtn";
 import { Nickname, ProfileImg } from "../../styledCom/Input.style";
 import {
-  Aaaa,
+  AiOutlineIdcardBox,
   FollowBtn,
   ModalWrapper,
   NoneImg,
@@ -137,10 +137,10 @@ const UserInfoCom = ({ userInfoModal, setUserInfoModal, lastSegment, setGlobalMs
                 }
               }}
             >
-              <Aaaa>
+              <AiOutlineIdcardBox>
                 {" "}
                 <AiOutlineIdcard size={25} /> {userInfo.userIdentifier}
-              </Aaaa>
+              </AiOutlineIdcardBox>
             </Nickname>
 
             {userInfo.followRelationShip ? (

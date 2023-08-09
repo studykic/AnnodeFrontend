@@ -2,7 +2,6 @@ import { IoMdClose } from "react-icons/io";
 import { MdRefresh } from "react-icons/md";
 import { Carousel } from "react-responsive-carousel";
 import styled, { keyframes } from "styled-components";
-import theme from "../../Util/theme";
 
 export const SpaceContainer = styled.div`
   position: absolute;
@@ -14,8 +13,6 @@ export const SpaceContainer = styled.div`
   width: 100vw;
 
   align-items: center;
-
-  /* background: linear-gradient(179deg, #681d37, ${theme.sectionColor1}); */
 `;
 
 export const PospaceItem = styled.div`

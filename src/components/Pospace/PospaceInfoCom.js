@@ -11,16 +11,11 @@ import usePospaceInfo from "../../hooks/pospace/usePospcaeInfo";
 import useForm from "../../hooks/useForm";
 import useTime from "../../hooks/useTime";
 
-// import { ReportModal, ReportModalContent, ReportTextArea } from "../../styledCom/ChatRoom/ChatRoomHeaderBoxCon.style";
 import { AccountBtnBox, FieldWrapper, StyledLabel, StyledOption, StyledSelect } from "../../styledCom/Input.style";
 import {
-  ASD,
-  ASDD,
-  AaaB,
-  AaaBc,
   AudioItem,
-  BTT,
   BottomBox,
+  BottomEventBox,
   ChatMessage,
   ChatSection,
   ChatSection2,
@@ -28,8 +23,11 @@ import {
   CommentContent,
   CommentSend,
   CommentWindow,
+  CommenterBox,
+  EditBox,
   EditBtn,
   EditPospaceContentBox2,
+  EditSelectBox,
   ImgDeleteBtn,
   LightDiv,
   LikeBtnBox,
@@ -54,7 +52,6 @@ import {
   RowUserList,
   SelectImg,
   SendBtn,
-  SendBtn2,
   StringContentBox,
   StringContentBox2,
   StyledCarousel,
@@ -63,6 +60,7 @@ import {
   StyledInputChat2,
   StyledInputCheck,
   UserBox,
+  UserBoxItem,
   UserCommentBox,
   UserInteractionBox,
   VolumeSlider,
@@ -294,7 +292,7 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
                       if (userIdx >= 3) {
                         return (
                           <UserBox key={user.userIdentifier + "UserBox"}>
-                            <ASDD>
+                            <UserBoxItem>
                               <AudioItem>
                                 <audio
                                   ref={(elem) => {
@@ -323,7 +321,7 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
                                   receiveAudioRefs.current[userIdx].volume = e.target.value;
                                 }}
                               />
-                            </ASDD>
+                            </UserBoxItem>
                           </UserBox>
                         );
                       }
@@ -550,8 +548,8 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
               )}
 
               {editModal && (
-                <AaaB>
-                  <AaaBc>
+                <EditBox>
+                  <EditSelectBox>
                     <FieldWrapper>
                       <StyledSelect name="maxAnnode" value={editForm.maxAnnode} onChange={updateEditForm}>
                         <StyledOption value="">최대 대화인원수 선택</StyledOption>
@@ -569,7 +567,7 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
                         <StyledOption value="CROSSFOLLOW">CROSSFOLLOW</StyledOption>
                       </StyledSelect>
                     </FieldWrapper>
-                  </AaaBc>
+                  </EditSelectBox>
                   <FieldWrapper width="fit-content">
                     <StyledLabel htmlFor="tolkOpen">
                       <IoIosMic size={30} />
@@ -606,7 +604,7 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
                       취소
                     </span>
                   </EditBtn>
-                </AaaB>
+                </EditBox>
               )}
 
               {pospaceInfo.userSimpleResTagList.length >= 1 &&
@@ -692,8 +690,8 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
             </PostInteractionBox>
           )}
 
-          <BTT>
-            <BottomBox>
+          <BottomBox>
+            <BottomEventBox>
               {pospaceInfo.editAuthority ? (
                 <UserInteractionBox>
                   <FaEdit
@@ -735,7 +733,7 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
                 <span> {formatDateTime(pospaceInfo.pospceCreatedTime)}</span>
                 <span>{pospaceInfo.visibility}</span>
               </PostDetailInfoBox>
-            </BottomBox>
+            </BottomEventBox>
 
             {userList.length > 0 && !editModal && !commentModal && (
               <MessageSend>
@@ -761,7 +759,7 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
                 </SendBtn>
               </MessageSend>
             )}
-          </BTT>
+          </BottomBox>
 
           <CommentBox commentModal={commentModal}>
             <StyledCloseIconBox>
@@ -785,10 +783,10 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
                     src={item.commentWriter.profileImgFileUrl}
                     alt="User"
                   />
-                  <ASD>
+                  <CommenterBox>
                     <ProfileName>{item.commentWriter.nickName}</ProfileName>
                     <CommentContent>{item.commentContent}</CommentContent>
-                  </ASD>
+                  </CommenterBox>
 
                   {item.commentWriter.userIdentifier === myIdentifier && (
                     <span
@@ -817,13 +815,13 @@ const PospaceInfoCom = ({ setPospaceWs, lastSegment, pospaceModal, setPospaceMod
                 }}
               />
               {/* 전송 */}
-              <SendBtn2
+              <SendBtn
                 onClick={() => {
                   onEnterPressedComment(null, postPospaceComment, setComment);
                 }}
               >
                 <MdSend size={25} />
-              </SendBtn2>
+              </SendBtn>
             </CommentSend>
           </CommentBox>
         </ModalWrapper>

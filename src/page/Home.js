@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import LoginCom from "../components/Home/LoginCom";
 import PasswordResetForm from "../components/Home/PasswordResetForm";
-import { Aaa, Bbb, HomeCon, TopSession } from "../styledCom/Home.style";
+import { HomeCon, HomeLogo, HomeSectionBox, TopSession } from "../styledCom/Home.style";
 import { PasswordResetLabel } from "../styledCom/Login/LoginCom.style";
 
 const Home = ({ setGlobalMsg, loginState, setLoginState, firstCheck }) => {
@@ -34,9 +34,9 @@ const Home = ({ setGlobalMsg, loginState, setLoginState, firstCheck }) => {
 
   return (
     <HomeCon>
-      <Aaa>
+      <HomeLogo>
         <img src="/Pospace.png" width={"80%"} alt="Logo" />
-      </Aaa>
+      </HomeLogo>
 
       {window.location.pathname === "/" && firstCheck ? null : (
         <TopSession>
@@ -48,7 +48,7 @@ const Home = ({ setGlobalMsg, loginState, setLoginState, firstCheck }) => {
 
       {findPasswordWindow ? <PasswordResetForm setGlobalMsg={setGlobalMsg}></PasswordResetForm> : null}
 
-      <Bbb>
+      <HomeSectionBox>
         <PasswordResetLabel
           onClick={() => {
             setFindPasswordWindow((prev) => !prev);
@@ -66,7 +66,7 @@ const Home = ({ setGlobalMsg, loginState, setLoginState, firstCheck }) => {
             <h3>Pospace 이용약관 및 개인정보처리방침</h3>
           </Link>
         </PasswordResetLabel>
-      </Bbb>
+      </HomeSectionBox>
     </HomeCon>
   );
 };

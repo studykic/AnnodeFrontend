@@ -11,22 +11,6 @@ const fadeIn = keyframes`
   }
 `;
 
-export const Aaa = styled.div`
-  position: absolute;
-  top: 0vh;
-  width: 100vw;
-  height: calc(var(--vh, 1vh) * 95);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const PospaceImgLabel = styled.label`
-  width: 90%;
-  height: 20%;
-`;
-
 export const MessageSend = styled.div`
   position: fixed;
 
@@ -37,8 +21,6 @@ export const MessageSend = styled.div`
   justify-content: space-between;
 
   width: 100vw;
-
-  /* z-index: 99999; */
 `;
 
 export const StyledInputChat = styled.input`
@@ -98,7 +80,6 @@ export const CreateBtnBox = styled.div`
 export const ModalInput = styled.input`
   font-size: 1.2rem;
 
-  /* padding: 0.5em; */
   margin: 0.5em 0;
   border: none;
   border-radius: 4px;
@@ -137,25 +118,10 @@ export const PostInteractionBox = styled.div`
   margin-top: 0.5rem;
 `;
 
-// export const BTT = styled.div`
-//   position: relative;
-
-//   box-sizing: border-box;
-//   /* bottom: 0vh;margin-top: auto; */
-
-//   margin-top: auto;
-
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-between;
-
-//   width: 100%;
-// `;
-export const BTT = styled.div`
+export const BottomBox = styled.div`
   position: relative;
 
   box-sizing: border-box;
-  /* bottom: 0vh;margin-top: auto; */
 
   bottom: calc(var(--vh, 1vh) * 0);
 
@@ -166,7 +132,7 @@ export const BTT = styled.div`
   width: 100%;
 `;
 
-export const BottomBox = styled.div`
+export const BottomEventBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -207,9 +173,6 @@ export const CommentBox = styled.div`
   width: 100%;
   height: calc(var(--vh, 1vh) * 40);
 
-  /* z-index: 10; */
-  /* max-height: 40vh; */
-
   background-color: rgba(50, 50, 50, 1);
 
   transform: ${(props) => (props.commentModal ? "translateY(-0%)" : "translateY(100%)")};
@@ -244,7 +207,7 @@ export const UserCommentBox = styled.div`
   }
 `;
 
-export const ASD = styled.div`
+export const CommenterBox = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 1rem;
@@ -327,16 +290,13 @@ export const PospaceContentBox = styled.div`
   height: 100%;
   overflow: scroll;
 
-  /* background: linear-gradient(145deg, #2f2f3e, #1f1f28); */
   background-color: #212121;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   border-radius: 1rem;
 
-  /* 글자 간격 (가독성 향상) */
   line-height: 2;
 
-  /* 패딩 (상, 좌우, 하) */
   padding: 1rem;
 
   box-sizing: border-box;
@@ -349,16 +309,13 @@ export const PospaceContentEditBox = styled.textarea`
   height: 100%;
   overflow: scroll;
 
-  /* background: linear-gradient(145deg, #2f2f3e, #1f1f28); */
   background-color: #212121;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   border-radius: 1rem;
 
-  /* 글자 간격 (가독성 향상) */
   line-height: 2;
 
-  /* 패딩 (상, 좌우, 하) */
   padding: 1rem;
 
   box-sizing: border-box;
@@ -378,16 +335,13 @@ export const PospaceContentBox2 = styled.div`
   height: 50%;
   overflow: scroll;
 
-  /* background: linear-gradient(145deg, #2f2f3e, #1f1f28); */
   background-color: #212121;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   border-radius: 1rem;
 
-  /* 글자 간격 (가독성 향상) */
   line-height: 2.5;
 
-  /* 패딩 (상, 좌우, 하) */
   padding: 1.5rem;
 
   box-sizing: border-box;
@@ -398,16 +352,13 @@ export const EditPospaceContentBox2 = styled.textarea`
   height: 50%;
   overflow: scroll;
 
-  /* background: linear-gradient(145deg, #2f2f3e, #1f1f28); */
   background-color: #212121;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
   border-radius: 1rem;
 
-  /* 글자 간격 (가독성 향상) */
   line-height: 2.5;
 
-  /* 패딩 (상, 좌우, 하) */
   padding: 1.5rem;
 
   box-sizing: border-box;
@@ -520,8 +471,6 @@ export const CommentSend = styled.div`
 
   width: 100vw;
 
-  /* z-index: 99999; */
-
   box-sizing: border-box;
 `;
 
@@ -537,16 +486,7 @@ export const StyledInputChat2 = styled.input`
   color: white;
 `;
 
-export const SendBtn2 = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 15%;
-
-  background: linear-gradient(145deg, #fa6e85, #675eb9, #5bcff5);
-`;
-
-export const AaaB = styled.div`
+export const EditBox = styled.div`
   display: flex;
 
   flex-direction: column;
@@ -564,7 +504,7 @@ export const AaaB = styled.div`
   margin: 1rem 0rem;
 `;
 
-export const AaaBc = styled.div`
+export const EditSelectBox = styled.div`
   display: flex;
   flex-direction: row;
 `;
@@ -596,7 +536,6 @@ export const UserBackGroundBox = styled.div`
 
   justify-items: center;
   align-content: space-between;
-  /* grid-gap: 52vh 0px; */
 `;
 
 export const MainContentBox = styled.div`
@@ -625,7 +564,7 @@ export const UserBox = styled.div`
   border-radius: 1rem;
 `;
 
-export const ASDD = styled.div``;
+export const UserBoxItem = styled.div``;
 
 export const VolumeSlider = styled.input`
   width: 80%;
@@ -633,9 +572,6 @@ export const VolumeSlider = styled.input`
 
 export const AudioItem = styled.div`
   width: 100%;
-  /* z-index: -1; */
-
-  /* border: 2px solid white; */
 `;
 
 export const LightDiv = styled.div`

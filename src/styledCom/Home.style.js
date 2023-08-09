@@ -14,7 +14,7 @@ export const HomeCon = styled.div`
   align-items: center;
 `;
 
-export const Aaa = styled.div`
+export const HomeLogo = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,7 @@ export const TopSession = styled.div`
   align-items: center;
 `;
 
-export const Bbb = styled.div`
+export const HomeSectionBox = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;

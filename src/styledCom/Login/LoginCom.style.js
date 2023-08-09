@@ -46,10 +46,6 @@ export const LoginBox = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
-
-    input {
-      /* height: 5vh; */
-    }
   }
 `;
 

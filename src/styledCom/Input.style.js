@@ -48,8 +48,6 @@ export const StyledTextArea = styled.textarea`
   background-color: transparent;
   color: ${theme.fontColor};
 
-  /* border: 2px solid gray; */
-
   border-radius: 1rem;
 `;
 

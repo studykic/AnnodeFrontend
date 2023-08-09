@@ -56,6 +56,5 @@ export const LodingBox = styled.div`
 `;
 
 export const LodingText = styled.h1`
-  /* font-family: 'Grandiflora One', serif; */
   font-family: "Lora", serif;
 `;

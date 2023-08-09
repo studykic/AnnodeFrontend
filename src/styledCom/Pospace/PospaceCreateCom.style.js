@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const PospaceCreateBox = styled.div`
-  /* Top Com */
   position: absolute;
   left: 0;
   top: calc(var(--vh, 1vh) * 5);
@@ -66,8 +65,6 @@ export const StyledTextArea = styled.textarea`
   background-color: transparent;
 
   border: none;
-
-  /* border: 2px solid gray; */
 
   line-height: 1.5;
 

@@ -20,8 +20,6 @@ export const UserInfoComBox = styled.div`
   width: 100vw;
   height: calc(var(--vh, 1vh) * 90);
 
-  /* z-index: 1; */
-
   background-color: #121212;
 `;
 
@@ -36,9 +34,6 @@ export const ModalWrapper = styled.div`
 `;
 
 export const UserInfoBox = styled.div`
-  /* position: relative;
-  top: 0vh; */
-
   display: flex;
   flex-direction: row;
 
@@ -98,7 +93,6 @@ export const PospaceInfoBox = styled.div`
 
 export const PospaceContentBox = styled.div`
   width: 50%;
-  /* height: 20%; */
 `;
 
 export const PospaceContent = styled.div`
@@ -109,7 +103,6 @@ export const PospaceContent = styled.div`
   overflow: auto;
   text-overflow: ellipsis;
   white-space: nowrap;
-  /* overflow-wrap: break-word; */
 
   line-height: 1.7;
 
@@ -145,7 +138,7 @@ export const PospaceKind = styled.div`
   font-size: 0.7rem;
 `;
 
-export const Aaaa = styled.div`
+export const AiOutlineIdcardBox = styled.div`
   display: flex;
 
   justify-content: center;
