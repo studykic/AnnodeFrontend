@@ -15,7 +15,7 @@ PassWord : kic12190
 - https://annode-kic.com
 
 ### 연관 GitHub Repository
-### 프로젝트 주요 설명은 Annode_Backend로 가주세요!
+### 프로젝트 주요 설명은 Annode Backend에 작성되어있습니다
 
 ### [Annode Frontend](https://github.com/studykic/AnnodeFrontend)
 
